@@ -44,6 +44,32 @@ table .comment td {
   position: sticky;
   top: 0;
   background-color: white;
-  z-index: 1000;
+  z-index: 500;
   background-color: #A5CFE7;
+}
+
+/* small screan detect */
+/* 默认隐藏提示信息 */
+.landscape-prompt {
+  display: none;
+  position: fixed;
+  /* 或absolute，根据需要 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1000;
+  /* 确保它覆盖其他内容 */
+}
+
+/* 屏幕宽度小于700px时显示提示 */
+@media (max-width: 700px) {
+  .landscape-prompt {
+    display: flex;
+  }
 }

@@ -111,6 +111,14 @@ function App() {
         </header>
 
         <div className="row">
+          <div className="landscape-prompt">
+            <div class="alert alert-danger" role="alert">
+              Your window is too narrow, please use in landscape mode.
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
           <div className="col-md-12 mb-4">
             <table className="table" id="ass-header">
               <thead>
@@ -147,6 +155,28 @@ function App() {
             </table>
           </div>
         </div>
+
+        <div className="row">
+          {
+            parsedContent === '' && <div className="col-md-12 mb-4 d-flex justify-content-center">
+              <div class="alert alert-primary" role="alert">
+                Click "Open ASS" to read an ASS file.
+              </div>
+            </div>
+          }
+        </div>
+        <div className="row">
+          {
+            parsedContent === '' && <div className="col-md-12 mb-4 d-flex justify-content-center">
+              <div class="alert alert-warning" role="alert">
+                Your file will never be uploaded - all data are processed in your browser.
+              </div>
+            </div>
+          }
+        </div>
+
+
+
 
         {/* raw data */}
         {/* <div className="row">
