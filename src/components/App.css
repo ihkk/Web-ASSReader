@@ -13,3 +13,24 @@
 .custom-file-label::after {
   content: "文件已选择";
 }
+
+
+/* ass table style */
+
+table .comment td {
+  background-color: #D8DEF5;
+}
+
+.table td,
+.table th {
+  padding: 0px;
+  line-height: 1.1;
+}
+
+
+/* App.css */
+.table td {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
