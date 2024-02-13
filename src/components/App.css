@@ -1,0 +1,15 @@
+/* App.css */
+
+/* 自定义上传按钮样式 */
+.custom-file-input:lang(en)::after {
+  content: "选择文件";
+}
+
+.custom-file-input:lang(en)::before {
+  content: "浏览";
+}
+
+/* 当文件选中后，通过JavaScript更改这个label的内容 */
+.custom-file-label::after {
+  content: "文件已选择";
+}
