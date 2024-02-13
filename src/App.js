@@ -100,13 +100,14 @@ function App() {
             <table className="table">
               <thead>
                 <tr>
-                  <th style={{ minWidth: '100px' }}>Start</th>
-                  <th style={{ minWidth: '100px' }}> End</th>
+                  <th>#</th>
+                  <th>Start</th>
+                  <th> End</th>
                   <th>Style</th>
                   {shouldShowNameColumn && <th>Actor</th>}
-                  {shouldShowMarginLColumn && <th style={{ minWidth: '50px' }}>L</th>}
-                  {shouldShowMarginRColumn && <th style={{ minWidth: '50px' }}>R</th>}
-                  {shouldShowMarginVColumn && <th style={{ minWidth: '20px' }}>V</th>}
+                  {shouldShowMarginLColumn && <th>L</th>}
+                  {shouldShowMarginRColumn && <th>R</th>}
+                  {shouldShowMarginVColumn && <th>V</th>}
                   {shouldShowEffectColumn && <th>Effect</th>}
                   <th>Text</th>
 
@@ -115,15 +116,16 @@ function App() {
               <tbody>
                 {events.map((event, index) => (
                   <tr key={index} className={event.key === "Comment" ? "comment" : ""}>
+                    <td>{index + 1}</td>
                     <td>{event.value.Start}</td>
                     <td>{event.value.End}</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>{event.value.Style}</td>
+                    <td>{event.value.Style}</td>
                     {shouldShowNameColumn && <td>{event.value.Name}</td>}
                     {shouldShowMarginLColumn && <td>{event.value.MarginL}</td>}
                     {shouldShowMarginRColumn && <td>{event.value.MarginR}</td>}
                     {shouldShowMarginVColumn && <td>{event.value.MarginV}</td>}
                     {shouldShowEffectColumn && <td>{event.value.Effect}</td>}
-                    <td>{event.value.Text}</td>
+                    <td >{event.value.Text}</td>
                   </tr>
                 ))}
               </tbody>

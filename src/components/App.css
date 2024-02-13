@@ -32,5 +32,10 @@ table .comment td {
 .table td {
   word-wrap: break-word;
   word-break: break-all;
+  white-space: nowrap;
+}
+
+.table td:last-child,
+.table th:last-child {
   white-space: normal;
 }
