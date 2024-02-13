@@ -63,6 +63,21 @@ function App() {
   const shouldShowMarginRColumn = events.some(event => event.value.MarginR.trim() !== '0');
   const shouldShowMarginVColumn = events.some(event => event.value.MarginV.trim() !== '0');
 
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      document.getElementById("backToTop").style.display = "block";
+    } else {
+      document.getElementById("backToTop").style.display = "none";
+    }
+  }
+
+  // 当用户点击按钮时，回到页面顶部
+  function scrollToTop() {
+    document.body.scrollTop = 0; // 对于Safari
+    document.documentElement.scrollTop = 0; // 对于Chrome, Firefox, IE和Opera
+  }
 
 
   return (
@@ -149,8 +164,42 @@ function App() {
           </div>
         </div> */}
 
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="https://github.com/ihkk" class="link" target="_blank" style={{ textDecoration: "none" }}><span class="mb-3 mb-md-0 text-muted">© Jacky HE</span></a>
+          </div>
 
-      </div>
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3">
+              <a className="text-muted" target="_blank" href="https://github.com/ihkk/Web-ASSReader">
+                <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub Logo" style={{ width: '24px', height: '24px' }} />
+              </a>
+
+
+            </li>
+          </ul>
+        </footer>
+
+      </div >
+      {/* back to top */}
+      < button
+        id="backToTop"
+        onClick={scrollToTop}
+        style={{
+          display: 'none', // 不需要单位的值可以直接作为字符串
+          position: 'fixed',
+          bottom: '20px',
+          right: '30px',
+          zIndex: 99,
+          padding: '10px',
+          borderRadius: '10px',
+        }
+        }
+        className="btn btn-outline-primary"
+      >
+        ↑
+      </button >
+
     </div >
   );
 }
