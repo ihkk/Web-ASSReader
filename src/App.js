@@ -3,11 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import assParser from 'ass-parser';
 import React, { useEffect, useState } from "react";
 
-
 function App() {
 
   const [parsedContent, setParsedContent] = useState('');
   const [events, setEvents] = useState([]);
+  // isReplaced 跟踪ass标签是否隐藏
+  const [isReplaced, setIsReplaced] = useState(false);
+  const [originalEvents, setOriginalEvents] = useState({});
+
+
 
 
   const handleFileUpload = (event) => {
@@ -25,10 +29,30 @@ function App() {
         const jsonString = JSON.stringify(dialoguesAndComments, null, 2);
         setParsedContent(jsonString);
         setEvents(dialoguesAndComments);
+        setOriginalEvents(dialoguesAndComments);
       };
       reader.readAsText(file);
     }
   };
+
+
+
+  const handleReplace = () => {
+    if (isReplaced) {
+      // 如果已经替换了，就恢复原始文本
+      // 恢复原始文本
+      setEvents(originalEvents);
+    } else {
+      // 替换符合正则表达式的内容
+      setEvents(events.map(event => ({
+        ...event,
+        value: { ...event.value, Text: event.value.Text.replace(/\{.*?\}/g, "☀") }
+      })));
+    }
+    setIsReplaced(!isReplaced); // 切换状态
+  };
+
+
 
   // check if to display Actor/Name
   const shouldShowNameColumn = events.some(event => event.value.Name.trim() !== '');
@@ -38,6 +62,8 @@ function App() {
   const shouldShowMarginLColumn = events.some(event => event.value.MarginL.trim() !== 0);
   const shouldShowMarginRColumn = events.some(event => event.value.MarginR.trim() !== 0);
   const shouldShowMarginVColumn = events.some(event => event.value.MarginV.trim() !== 0);
+
+
 
   return (
     <div className="App">
@@ -50,14 +76,22 @@ function App() {
           <ul class="nav nav-pills">
             {/* <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li> */}
             {/* <li class="nav-item"><a href="#" class="nav-link">Features</a></li> */}
-            <input
+            <li><input
               type="file"
               className="custom-file-input"
               id="uploadASS"
               onChange={handleFileUpload}
               style={{ display: 'none' }} // 隐藏默认的文件输入
             />
-            <label className="btn btn-outline-primary" htmlFor="uploadASS">Open ASS</label>
+              <label className="btn btn-outline-primary" htmlFor="uploadASS">Open ASS</label>
+            </li>
+            <p>　</p>
+            <li>
+              <button className="btn btn-outline-primary" onClick={handleReplace}>
+                {isReplaced ? '{\\t}' : '☀'}
+              </button>
+            </li>
+
           </ul>
         </header>
 
