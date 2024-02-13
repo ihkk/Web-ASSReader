@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 function App() {
 
   const [parsedContent, setParsedContent] = useState('');
+  const [events, setEvents] = useState([]);
+
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -17,9 +19,13 @@ function App() {
         const content = e.target.result;
         // 使用ass-parser解析文件内容
         const parsedData = assParser(content, { comments: true });
+        // 提取对话和正文
+        const eventsSection = parsedData.find(section => section.section === "Events");
+        const dialoguesAndComments = eventsSection.body.filter(item => item.key === "Dialogue" || item.key === "Comment");
         // 转换成字符串，便于在textarea中显示
-        const jsonString = JSON.stringify(parsedData, null, 2);
+        const jsonString = JSON.stringify(dialoguesAndComments, null, 2);
         setParsedContent(jsonString);
+        setEvents(dialoguesAndComments);
       };
       reader.readAsText(file);
     }
@@ -50,6 +56,7 @@ function App() {
             <label className="btn btn-outline-primary" htmlFor="uploadASS">Open ASS</label>
           </div>
         </div>
+
         <div className="row">
           <div className="col-md-12 mb-4">
             <div class="form-group">
@@ -57,13 +64,45 @@ function App() {
               <textarea
                 className="form-control"
                 id="parsedAss"
-                rows="20"
+                rows="7"
                 value={parsedContent}
                 readOnly
               ></textarea>
             </div>
           </div>
         </div>
+
+        <div className="row">
+          <div className="col-md-12 mb-4">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Marked</th>
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>Style</th>
+                  <th>Name</th>
+                  <th>Text</th>
+                  {/* ...其他列... */}
+                </tr>
+              </thead>
+              <tbody>
+                {events.map((event, index) => (
+                  <tr key={index}>
+                    <td>{event.value.Marked}</td>
+                    <td>{event.value.Start}</td>
+                    <td>{event.value.End}</td>
+                    <td>{event.value.Style}</td>
+                    <td>{event.value.Name}</td>
+                    <td>{event.value.Text}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
       </div>
     </div>
   );
