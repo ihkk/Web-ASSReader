@@ -28,7 +28,6 @@ table .comment td {
 }
 
 
-/* App.css */
 .table td {
   word-wrap: break-word;
   word-break: break-all;
@@ -38,4 +37,13 @@ table .comment td {
 .table td:last-child,
 .table th:last-child {
   white-space: normal;
+}
+
+/* table header */
+#ass-header th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  background-color: #A5CFE7;
 }
