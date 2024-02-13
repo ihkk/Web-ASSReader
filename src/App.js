@@ -49,7 +49,7 @@ function App() {
         value: { ...event.value, Text: event.value.Text.replace(/\{.*?\}/g, "☀") }
       })));
     }
-    setIsReplaced(!isReplaced); // 切换状态
+    setIsReplaced(!isReplaced);
   };
 
 
@@ -59,9 +59,9 @@ function App() {
   // check if to display Effect
   const shouldShowEffectColumn = events.some(event => event.value.Effect.trim() !== '');
   // Margins
-  const shouldShowMarginLColumn = events.some(event => event.value.MarginL.trim() !== 0);
-  const shouldShowMarginRColumn = events.some(event => event.value.MarginR.trim() !== 0);
-  const shouldShowMarginVColumn = events.some(event => event.value.MarginV.trim() !== 0);
+  const shouldShowMarginLColumn = events.some(event => event.value.MarginL.trim() !== '0');
+  const shouldShowMarginRColumn = events.some(event => event.value.MarginR.trim() !== '0');
+  const shouldShowMarginVColumn = events.some(event => event.value.MarginV.trim() !== '0');
 
 
 
@@ -70,7 +70,7 @@ function App() {
       <div className="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <span class="fs-4">Web ASS Parser</span>
+            <span class="fs-4">ASS Reader</span>
           </a>
 
           <ul class="nav nav-pills">
@@ -117,7 +117,7 @@ function App() {
                   <tr key={index} className={event.key === "Comment" ? "comment" : ""}>
                     <td>{event.value.Start}</td>
                     <td>{event.value.End}</td>
-                    <td>{event.value.Style}</td>
+                    <td style={{ whiteSpace: 'nowrap' }}>{event.value.Style}</td>
                     {shouldShowNameColumn && <td>{event.value.Name}</td>}
                     {shouldShowMarginLColumn && <td>{event.value.MarginL}</td>}
                     {shouldShowMarginRColumn && <td>{event.value.MarginR}</td>}
@@ -131,8 +131,8 @@ function App() {
           </div>
         </div>
 
-
-        <div className="row">
+        {/* raw data */}
+        {/* <div className="row">
           <div className="col-md-12 mb-4">
             <div class="form-group">
               <label htmlFor="parsedAss">Raw data (for debugging)</label>
@@ -145,7 +145,7 @@ function App() {
               ></textarea>
             </div>
           </div>
-        </div>
+        </div> */}
 
 
       </div>
