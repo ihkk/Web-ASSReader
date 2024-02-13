@@ -42,10 +42,6 @@ function App() {
           <ul class="nav nav-pills">
             {/* <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li> */}
             {/* <li class="nav-item"><a href="#" class="nav-link">Features</a></li> */}
-          </ul>
-        </header>
-        <div className="row">
-          <div className="col-md-4 mb-4">
             <input
               type="file"
               className="custom-file-input"
@@ -54,9 +50,8 @@ function App() {
               style={{ display: 'none' }} // 隐藏默认的文件输入
             />
             <label className="btn btn-outline-primary" htmlFor="uploadASS">Open ASS</label>
-          </div>
-        </div>
-
+          </ul>
+        </header>
 
         <div className="row">
           <div className="col-md-12 mb-4">
