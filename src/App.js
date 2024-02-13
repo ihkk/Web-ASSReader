@@ -57,48 +57,56 @@ function App() {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-md-12 mb-4">
-            <div class="form-group">
-              <label htmlFor="parsedAss">Parsed ASS</label>
-              <textarea
-                className="form-control"
-                id="parsedAss"
-                rows="7"
-                value={parsedContent}
-                readOnly
-              ></textarea>
-            </div>
-          </div>
-        </div>
 
         <div className="row">
           <div className="col-md-12 mb-4">
             <table className="table">
               <thead>
                 <tr>
-                  <th>Marked</th>
                   <th>Start</th>
                   <th>End</th>
                   <th>Style</th>
                   <th>Name</th>
+                  <th>L</th>
+                  <th>R</th>
+                  <th>V</th>
+                  <th>Effect</th>
                   <th>Text</th>
-                  {/* ...其他列... */}
+
                 </tr>
               </thead>
               <tbody>
                 {events.map((event, index) => (
                   <tr key={index}>
-                    <td>{event.value.Marked}</td>
                     <td>{event.value.Start}</td>
                     <td>{event.value.End}</td>
                     <td>{event.value.Style}</td>
                     <td>{event.value.Name}</td>
+                    <td>{event.value.MarginL}</td>
+                    <td>{event.value.MarginR}</td>
+                    <td>{event.value.MarginV}</td>
+                    <td>{event.value.Effect}</td>
                     <td>{event.value.Text}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+
+
+        <div className="row">
+          <div className="col-md-12 mb-4">
+            <div class="form-group">
+              <label htmlFor="parsedAss">Raw data (for debugging)</label>
+              <textarea
+                className="form-control"
+                id="parsedAss"
+                rows="4"
+                value={parsedContent}
+                readOnly
+              ></textarea>
+            </div>
           </div>
         </div>
 
