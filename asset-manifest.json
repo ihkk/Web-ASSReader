@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ihkk/Web-ASSReader/static/css/main.9be1fc50.css",
+    "main.js": "/ihkk/Web-ASSReader/static/js/main.5eb0ab03.js",
+    "static/js/592.27e40756.chunk.js": "/ihkk/Web-ASSReader/static/js/592.27e40756.chunk.js",
+    "index.html": "/ihkk/Web-ASSReader/index.html",
+    "main.9be1fc50.css.map": "/ihkk/Web-ASSReader/static/css/main.9be1fc50.css.map",
+    "main.5eb0ab03.js.map": "/ihkk/Web-ASSReader/static/js/main.5eb0ab03.js.map",
+    "592.27e40756.chunk.js.map": "/ihkk/Web-ASSReader/static/js/592.27e40756.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9be1fc50.css",
+    "static/js/main.5eb0ab03.js"
+  ]
+}
