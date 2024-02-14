@@ -30,6 +30,7 @@ function App() {
         setParsedContent(jsonString);
         setEvents(dialoguesAndComments);
         setOriginalEvents(dialoguesAndComments);
+        setIsReplaced(false);
       };
       reader.readAsText(file);
     }
