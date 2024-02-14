@@ -9,6 +9,7 @@ function App() {
   const [events, setEvents] = useState([]);
   // isReplaced 跟踪ass标签是否隐藏
   const [isReplaced, setIsReplaced] = useState(false);
+  const [isSorted, setIsSorted] = useState(false);
   const [originalEvents, setOriginalEvents] = useState({});
 
 
@@ -29,8 +30,10 @@ function App() {
         const jsonString = JSON.stringify(dialoguesAndComments, null, 2);
         setParsedContent(jsonString);
         setEvents(dialoguesAndComments);
+        // make a hard copy of the original events
         setOriginalEvents(dialoguesAndComments);
         setIsReplaced(false);
+        setIsSorted(false);
       };
       reader.readAsText(file);
     }
@@ -53,6 +56,24 @@ function App() {
     setIsReplaced(!isReplaced);
   };
 
+
+
+  const handleTimeSort = () => {
+    console.log(originalEvents);
+    if (isSorted) {
+      setEvents([...originalEvents]);
+    } else {
+      console.log("start sorting");
+      const sortedEvents = JSON.parse(JSON.stringify(events)).sort((a, b) => {
+        const aStart = a.value.Start.split(':').reduce((acc, time) => (60 * acc) + +time, 0);
+        const bStart = b.value.Start.split(':').reduce((acc, time) => (60 * acc) + +time, 0);
+        return aStart - bStart;
+      });
+      setEvents(sortedEvents);
+    }
+    setIsSorted(!isSorted);
+    console.log(originalEvents);
+  };
 
 
   // check if to display Actor/Name
@@ -105,6 +126,12 @@ function App() {
             <li>
               <button className="btn btn-outline-primary" onClick={handleReplace}>
                 {isReplaced ? '{\\t}' : '☀'}
+              </button>
+            </li>
+            <p>　</p>
+            <li>
+              <button className="btn btn-outline-primary" onClick={handleTimeSort}>
+                {isSorted ? '↩' : '⏱'}
               </button>
             </li>
 
