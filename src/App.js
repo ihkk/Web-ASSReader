@@ -141,7 +141,7 @@ function App() {
         <div className="row">
           <div className="landscape-prompt">
             <div class="alert alert-danger" role="alert">
-              Your window is too narrow, please use in landscape mode.
+              Your window is too narrow, please use in landscape mode.<br />您的窗口过窄，请横屏使用。
             </div>
           </div>
         </div>
