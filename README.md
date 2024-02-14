@@ -23,6 +23,6 @@ This app will not upload any file to any server as all data are processed in the
 
 Fork and use `npm install` to install modules.
 
-`npm start` to start local server for develop and debug.
+`npm start` to start local server for development and debugging.
 
-`npm run deploy` to build and publish to github page.s
+`npm run deploy` to build and publish to github pages.
