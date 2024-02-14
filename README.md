@@ -1,3 +1,5 @@
+# Intro
+
 这是一个使用浏览器读取ASS(Advanced SubStation Alpha)文件的单页应用。**请在[github-pages](https://ass.h0.work/)中使用。**
 
 使用了[ASS Parser](https://github.com/eush77/ass-parser?tab=readme-ov-file)库进行文件解析。
@@ -11,3 +13,8 @@ This is a simple react based app which enables you to read a `.ass`(Advanced Sub
 Credits to [ASS Parser](https://github.com/eush77/ass-parser?tab=readme-ov-file) for parsing the input file.
 
 This app will not upload any file to any server as all data are processed in the browser.
+
+
+# TODO
+- Changed the title of the page based on ASS file name
+- ...
