@@ -18,3 +18,11 @@ This app will not upload any file to any server as all data are processed in the
 # TODO
 - Changed the title of the page based on ASS file name
 - ...
+
+# How to fork?
+
+Fork and use `npm install` to install modules.
+
+`npm start` to start local server for develop and debug.
+
+`npm run deploy` to build and publish to github page.s
